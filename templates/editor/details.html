@@ -1,0 +1,19 @@
+{% load editor_extras %}
+
+<head>
+  {% load static %}
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  <title>Details</title>
+</head>
+
+{% autoescape off %}
+<p>問題：</p>
+{% generate_question question_id %}
+
+<p>条件：</p>
+{% show_hyps question_id %}
+
+{% endautoescape %}
+
