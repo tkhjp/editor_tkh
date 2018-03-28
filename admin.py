@@ -3,6 +3,8 @@ from django.utils.html import format_html_join
 from django.utils.safestring import mark_safe
 from django.db import models
 from django.http import HttpResponse
+from django.contrib.auth.models import User, Group
+#from django.contrib.sites.models import Site
 
 # Register your models here.
 from .models import *
@@ -33,7 +35,7 @@ class QuestionAdmin(admin.ModelAdmin):
     
 class ParaAdmin(admin.ModelAdmin):
 
-	fields=('sample','para_chains','ans')
+	#fields=('Question_upload','sample','para_chains','ans')
 	readonly_fields =('sample',)
 	def sample(self,obj):
 		return mark_safe( obj.test())
@@ -41,7 +43,8 @@ class ParaAdmin(admin.ModelAdmin):
 
 
 
-
+admin.site.unregister(User)
+admin.site.unregister(Group)
 #admin.site.register(Question)
 admin.site.register(Question_upload,QuestionAdmin)
 admin.site.register(Question_para,ParaAdmin)
